@@ -16,6 +16,7 @@ class UserFixtures extends Fixture
             $user = new User();
             $user->setEmail($email);
             $user->setPlanePassword('secret');
+            $user->setRoles(['ROLE_ADMIN']);
 
             $manager->persist($user);
         }

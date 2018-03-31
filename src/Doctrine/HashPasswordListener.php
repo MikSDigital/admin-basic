@@ -51,7 +51,7 @@ class HashPasswordListener implements EventSubscriber
     /**
      * @param User $entity
      */
-    public function encodePassword(User $entity): void
+    public function encodePassword(User $entity)
     {
         $encoded = $this->passwordEncoder->encodePassword($entity, $entity->getPlanePassword());
 

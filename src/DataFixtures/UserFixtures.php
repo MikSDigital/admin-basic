@@ -15,6 +15,7 @@ class UserFixtures extends Fixture
             $email = 'user+' . $i . '@gmail.com';
             $user = new User();
             $user->setEmail($email);
+            $user->setPlanePassword('secret');
 
             $manager->persist($user);
         }

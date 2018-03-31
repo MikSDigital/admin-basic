@@ -26,3 +26,10 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+# when the service definition only contains arguments, you can omit the
+    # 'arguments' key and define the arguments just below the service class
+    App\Doctrine\HashPasswordListener:
+        autowire: true
+        tags:
+            - { name:doctrine.event_subscriber }

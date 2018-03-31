@@ -6,6 +6,13 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
+
+    {% if is_granted('ROLE_USER') %}
+        <a href="{{ path('security_logout') }}">LOGOUT</a>
+    {% else %}
+        <a href="{{ path('security_login') }}">LOG IN</a>
+    {% endif %}
+
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>

@@ -8,7 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
  * @Route("/admin", name="admin_area")
- * @Security("is_granted('ROLE_ADMIN')")
+ * @Security("is_granted('ROLE_USER')")
  */
 
 class AdminController extends Controller

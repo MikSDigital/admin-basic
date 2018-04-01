@@ -16,7 +16,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Stopwatch\Stopwatch;
 
-class AppAddUserCommand extends Command
+class AddUserCommand extends Command
 {
     protected static $defaultName = 'app:add-user';
 

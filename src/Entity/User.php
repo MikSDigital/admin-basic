@@ -2,14 +2,17 @@
 
 namespace App\Entity;
 
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\UserProviderInterface;
+
+use Symfony\Component\Validator\Constraints as Assert;
 
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="user")
+ * @UniqueEntity(fields={"email"}, message="This email exists in DB")
  */
 class User implements UserInterface
 {
@@ -25,10 +28,7 @@ class User implements UserInterface
      */
     private $roles = [];
 
-    /**
-     * @param mixed $roles
-     */
-    public function setRoles($roles)
+    public function setRoles(array $roles)
     {
         $this->roles = $roles;
     }
@@ -38,6 +38,10 @@ class User implements UserInterface
      */
     private $password;
 
+
+    /**
+     * @Assert\NotBlank(groups={"Registration"}))
+     */
     private $planePassword;
 
     /**
@@ -67,8 +71,18 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", unique=true)
+     * @Assert\NotBlank()
+     * @Assert\Email()
      */
     private $email;
+
+    /**
+     * @return mixed
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
 
     public function getUsername()
     {

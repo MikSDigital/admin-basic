@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
  * @Route("/admin", name="admin_area")
+ * @Security("is_granted('ROLE_ADMIN')")
  */
 
 class AdminController extends Controller
@@ -17,6 +18,8 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return $this->render('admin/index.html.twig', ['email' => $this->getUser()->getUsername()]);
+        return $this->render('admin/index.html.twig', [
+            'email' => $this->getUser() ? $this->getUser()->getUsername() : ''
+        ]);
     }
 }

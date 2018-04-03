@@ -89,10 +89,13 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
     {
         // if the user hits a secure page and start() was called, this was
         // the URL they were on, and probably where you want to redirect to
+
+//        https://github.com/symfony/symfony/issues/20305
+
         $targetPath = $this->getTargetPath($request->getSession(), $providerKey);
 
         if (!$targetPath) {
-            $targetPath = $this->router->generate('default');
+            $targetPath = $this->router->generate('admin_areaindex');
         }
 
         return new RedirectResponse($targetPath);

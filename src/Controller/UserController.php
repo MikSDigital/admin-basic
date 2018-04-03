@@ -32,7 +32,7 @@ class UserController extends Controller
 
             $this->authenticateUser($user);
 
-            return $this->redirectToRoute('default');
+            return $this->redirectToRoute('admin_areaindex');
         }
 
         return $this->render('user/register.html.twig', [
